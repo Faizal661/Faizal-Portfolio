@@ -19,14 +19,16 @@ const Navigation = () => {
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
-    { label: "Testimonials", href: "#testimonials" },
+    // { label: "Testimonials", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border" : "bg-transparent"
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <div className="section-container">
@@ -47,7 +49,11 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
+            <Button
+              size="sm"
+              className="bg-primary hover:bg-primary/90"
+              onClick={() => window.open("https://www.linkedin.com/in/mohammed-faizal-t", "_blank")}
+            >
               Hire Me
             </Button>
           </div>

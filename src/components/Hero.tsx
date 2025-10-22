@@ -8,9 +8,15 @@ const Hero = () => {
       {/* Geometric background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="geometric-line top-20 left-10 animate-fade-in" />
-        <div className="geometric-line top-40 right-20 animate-fade-in" style={{ animationDelay: "0.2s" }} />
+        <div
+          className="geometric-line top-40 right-20 animate-fade-in"
+          style={{ animationDelay: "0.2s" }}
+        />
         <div className="absolute w-96 h-96 bg-primary/5 rounded-full blur-3xl top-0 right-0 animate-glow-pulse" />
-        <div className="absolute w-96 h-96 bg-primary/5 rounded-full blur-3xl bottom-0 left-0 animate-glow-pulse" style={{ animationDelay: "1s" }} />
+        <div
+          className="absolute w-96 h-96 bg-primary/5 rounded-full blur-3xl bottom-0 left-0 animate-glow-pulse"
+          style={{ animationDelay: "1s" }}
+        />
       </div>
 
       <div className="section-container relative z-10 py-20">
@@ -18,21 +24,36 @@ const Hero = () => {
           {/* Left: Content */}
           <div className="space-y-8 animate-fade-in-up">
             <div className="space-y-4">
-              <p className="text-primary font-medium tracking-wide uppercase text-sm">Full-Stack Developer</p>
+              <p className="text-primary font-medium tracking-wide uppercase text-sm">
+                Full-Stack Developer
+              </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                Building <span className="gradient-text">Scalable</span> Web Solutions
+                Building <span className="gradient-text">Scalable</span> Web
+                Solutions
               </h1>
               <p className="text-xl text-muted-foreground max-w-xl">
-                MERN stack specialist with 1.5 years of hands-on experience creating modern, 
-                high-performance applications from concept to deployment.
+                MERN stack specialist with 1.5 years of hands-on experience
+                creating modern, high-performance applications from concept to
+                deployment.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50">
-                View Projects <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="gap-2 border-primary/30 hover:border-primary hover:bg-primary/10">
+              <a href="#projects">
+                <Button
+                  size="lg"
+                  className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50"
+                >
+                  View Projects
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2 border-primary/30 hover:border-primary hover:bg-primary/10"
+              >
                 <Download className="w-4 h-4" /> Download Resume
               </Button>
             </div>
@@ -41,15 +62,21 @@ const Hero = () => {
             <div className="flex flex-wrap gap-8 pt-4">
               <div>
                 <div className="text-3xl font-bold text-primary">4+</div>
-                <div className="text-sm text-muted-foreground">Projects Built</div>
+                <div className="text-sm text-muted-foreground">
+                  Projects Built
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">1.5+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-sm text-muted-foreground">
+                  Years Experience
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">10+</div>
-                <div className="text-sm text-muted-foreground">Technologies</div>
+                <div className="text-sm text-muted-foreground">
+                  Technologies
+                </div>
               </div>
             </div>
           </div>
@@ -57,9 +84,9 @@ const Hero = () => {
           {/* Right: Portrait */}
           <div className="relative animate-slide-in-right">
             <div className="relative z-10 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-card">
-              <img 
-                src={heroPortrait} 
-                alt="Mohammed Faizal T - Full-Stack Developer" 
+              <img
+                src={heroPortrait}
+                alt="Mohammed Faizal T - Full-Stack Developer"
                 className="w-full h-auto object-cover"
               />
             </div>
