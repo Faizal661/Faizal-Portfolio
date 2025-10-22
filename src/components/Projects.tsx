@@ -1,218 +1,125 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 import { ExternalLink, Github } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import fitAndCoreImg from "@/assets/project-fitandcore.jpg";
+import inkerImg from "@/assets/project-inker.jpg";
+import luxeScentsImg from "@/assets/project-luxescents.jpg";
+import learningAssistantImg from "@/assets/project-learning-assistant.jpg";
 
 const Projects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
   const projects = [
     {
       title: "Fit And Core Platform",
-      role: "Full-Stack Developer",
-      technologies: ["MERN Stack", "Generative AI", "Socket.io", "WebRTC"],
+      tagline: "Comprehensive fitness platform connecting trainees with professional trainers",
+      image: fitAndCoreImg,
+      tags: ["MERN Stack", "WebRTC", "Socket.io", "AI"],
       github: "https://github.com/Faizal661/Fit-And-Core",
-      liveDemo: "https://www.fitandcore.shop",
-      description: [
-        "Developed a comprehensive MERN stack platform connecting trainees with professional trainers online.",
-        "Implemented core features including trainer subscriptions, time slot booking, video call sessions, and real-time chat.",
-        "Integrated advanced functionalities like blog management, progression tracking, AI-powered nutrition tracking, communities, and a review system.",
-        "Designed and built features such as a streak system, wallet management, reporting, and notification services.",
-      ],
+      live: "https://www.fitandcore.shop",
+      featured: true,
     },
     {
-      title: "Inker (Open Source Contribution)",
-      role: "Contributor / Frontend Developer",
-      technologies: ["MERN stack", "Zustand", "Docker"],
+      title: "Inker",
+      tagline: "Open-source blog application with advanced comment functionality",
+      image: inkerImg,
+      tags: ["MERN", "Zustand", "Docker"],
       github: "https://github.com/TheByteFlow/Inker",
-      liveDemo: "https://inker-app.vercel.app/",
-      description: [
-        "Contributed a significant feature to 'Inker,' an open-source blog application.",
-        "Designed and implemented a robust comment section, enabling users to view, add, and reply to comments.",
-        "Gained hands-on experience with Zustand for state management and Docker for containerization during development.",
-      ],
+      live: "https://inker-app.vercel.app/",
+      featured: true,
     },
     {
-      title: "LuxeScents E-commerce Platform",
-      role: "Full-Stack Developer",
-      technologies: [
-        "Express",
-        "MongoDB",
-        "Ejs",
-        "Google Authentication",
-        "Razorpay",
-      ],
+      title: "LuxeScents E-commerce",
+      tagline: "Full-featured e-commerce platform for online perfume sales",
+      image: luxeScentsImg,
+      tags: ["Express", "MongoDB", "Razorpay", "OAuth"],
       github: "https://github.com/Faizal661/LuxeScents",
-      liveDemo: "#",
-      description: [
-        "Built a full-featured e-commerce platform specializing in online perfume sales.",
-        "Integrated secure Google Authentication for user logins and Razorpay for seamless payment processing.",
-        "Developed essential e-commerce functionalities including product management, shopping cart, wishlists, order processing, coupons, offers, and a wallet system.",
-      ],
+      live: "",
+      featured: true,
     },
     {
-      title: "Emotion-Based Intelligent Learning Assistant",
-      role: "Team Lead / Android Developer",
-      technologies: ["Python Flask", "Jinja 2", "Java"],
-      github:
-        "https://github.com/Faizal661/Emotion-based-Intelligent-Learning-Assistant-Web",
-      liveDemo:
-        "https://github.com/Faizal661/Emotion-based-Intelligent-Learning-Assistant-Android",
-      description: [
-        "Led backend development for a final year project aimed at tailoring syllabi for autistic students based on emotional responses.",
-        "Implemented Deep Learning for emotion recognition and Association Rule Mining for emotion classification.",
-        "Developed the Python Flask backend, including robust authentication and staff management modules.",
-        "Collaborated on frontend development using Jinja2 and an Android application built with Java.",
-      ],
+      title: "Emotion-Based Learning Assistant",
+      tagline: "Personalized educational content for autistic students using emotion detection",
+      image: learningAssistantImg,
+      tags: ["Python Flask", "Java", "Android"],
+      github: "https://github.com/Faizal661/Emotion-based-Intelligent-Learning-Assistant-Web",
+      live: "",
+      featured: false,
     },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Title animation
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Staggered project card animations
-      gsap.fromTo(
-        ".project-card",
-        { opacity: 0, y: 50, rotationX: 10 },
-        {
-          opacity: 1,
-          y: 0,
-          rotationX: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Hover animations for project cards
-      const projectCards = document.querySelectorAll(".project-card");
-      projectCards.forEach((card) => {
-        const cardElement = card as HTMLElement;
-
-        cardElement.addEventListener("mouseenter", () => {
-          gsap.to(cardElement, {
-            scale: 1.02,
-            y: -5,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        });
-
-        cardElement.addEventListener("mouseleave", () => {
-          gsap.to(cardElement, {
-            scale: 1,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl shadow-2xl mb-12 border border-slate-700/50 relative overflow-hidden"
-    >
-      <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tl from-emerald-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-
-      <div className="relative z-10">
-        <div className="w-fit">
-          <h2
-            ref={titleRef}
-            className="text-2xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent relative"
-          >
-            Featured Projects
-            <div className="absolute bottom-0 left-0 w-[70%] h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full"></div>
+    <section id="projects" className="py-24 relative">
+      <div className="section-container">
+        {/* Section Header */}
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Featured <span className="gradient-text">Projects</span>
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A showcase of my recent work building scalable, modern web applications
+          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-transparent mx-auto" />
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div
+            <Card
               key={index}
-              className="project-card bg-gradient-to-br from-slate-700/50 to-slate-800/50 p-6 rounded-xl shadow-xl border border-slate-600/50 hover:border-emerald-500/50 transition-all duration-300 group"
+              className="group overflow-hidden bg-card border-border hover:border-primary/50 card-hover"
             >
-              <h3 className="text-lg md:text-2xl font-semibold text-emerald-300 mb-3 group-hover:text-emerald-200 transition-colors duration-300">
-                {project.title}
-              </h3>
-
-              <p className="text-sm md:text-lg text-purple-300 mb-4 font-medium">
-                {project.role}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 text-xs font-semibold px-3 py-1 rounded-full border border-cyan-500/30"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              {/* Project Image */}
+              <div className="relative overflow-hidden aspect-video">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Overlay Links */}
+                <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {project.github && (
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      className="gap-2"
+                      onClick={() => window.open(project.github, "_blank")}
+                    >
+                      <Github className="w-4 h-4" /> Code
+                    </Button>
+                  )}
+                  {project.live && (
+                    <Button
+                      size="sm"
+                      className="gap-2 bg-primary hover:bg-primary/90"
+                      onClick={() => window.open(project.live, "_blank")}
+                    >
+                      <ExternalLink className="w-4 h-4" /> Live Demo
+                    </Button>
+                  )}
+                </div>
               </div>
 
-              <ul className="text-sm md:text-md space-y-2 text-slate-300 mb-6">
-                {project.description.map((desc, descIndex) => (
-                  <li key={descIndex} className="flex items-start">
-                    <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    <span className="leading-relaxed">{desc}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Project Info */}
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground">{project.tagline}</p>
+                </div>
 
-              <div className="flex space-x-4">
-                {project.liveDemo && project.liveDemo !== "#" && (
-                  <a
-                    href={project.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className=" text-sm md:text-md flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Live Demo
-                  </a>
-                )}
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className=" text-sm md:text-md flex items-center px-4 py-2 bg-slate-600/50 hover:bg-slate-500/50 text-slate-300 hover:text-white rounded-lg transition-all duration-300 transform hover:scale-105 border border-slate-500/50 hover:border-slate-400/50"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    GitHub
-                  </a>
-                )}
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <Badge key={tagIndex} variant="secondary" className="bg-secondary/50">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
