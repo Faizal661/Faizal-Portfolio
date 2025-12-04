@@ -82,17 +82,17 @@ const Hero = () => {
           </div>
 
           {/* Right: Portrait */}
-          <div className="relative animate-slide-in-right">
-            <div className="relative z-10 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-card">
+          {/* <div className="relative animate-slide-in-right"> */}
+            {/* <div className="relative z-10 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-card">
               <img
                 src={heroPortrait}
                 alt="Mohammed Faizal T - Full-Stack Developer"
                 className="w-full h-auto object-cover"
               />
-            </div>
+            </div> */}
             {/* Glow effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl blur-2xl -z-10" />
-          </div>
+            {/* <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl blur-2xl -z-10" /> */}
+          {/* </div> */}
         </div>
       </div>
 
